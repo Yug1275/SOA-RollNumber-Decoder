@@ -1,0 +1,501 @@
+{
+  "info": {
+    "_postman_id": "pdeu-roll-decoder-2026",
+    "name": "PDEU Student Roll Number Decoder",
+    "description": "Postman collection for the PDEU Student Roll Number Decoder Flask API.\nBase URL: http://127.0.0.1:5000\n\nStart the Flask server first:\n  cd Student-Roll-Number-Decoder\n  python app.py\n\nThen run these requests individually.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Test 1 – Computer Engineering, 2023 batch (23BCP242)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"roll_number\": \"23BCP242\"\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/decode",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5000",
+          "path": ["decode"]
+        },
+        "description": "Expected: HTTP 200, branch=Computer Engineering, enrollment_year=2023, semester=7 (on 25-Oct-2026), expected_degree_completion_year=2027"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 200', function () { pm.response.to.have.status(200); });",
+              "pm.test('Branch is Computer Engineering', function () {",
+              "    var json = pm.response.json();",
+              "    pm.expect(json.branch).to.eql('Computer Engineering');",
+              "});",
+              "pm.test('Enrollment year is 2023', function () {",
+              "    pm.expect(pm.response.json().enrollment_year).to.eql(2023);",
+              "});",
+              "pm.test('Expected completion year is 2027', function () {",
+              "    pm.expect(pm.response.json().expected_degree_completion_year).to.eql(2027);",
+              "});",
+              "pm.test('Semester is a number between 1 and 8', function () {",
+              "    var s = pm.response.json().semester;",
+              "    pm.expect(s).to.be.a('number');",
+              "    pm.expect(s).to.be.within(1, 8);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Test 2 – ICT, 2023 batch (23BIT187)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"roll_number\": \"23BIT187\"\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/decode",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5000",
+          "path": ["decode"]
+        },
+        "description": "Expected: HTTP 200, branch=Information and Communication Technology (ICT), enrollment_year=2023, semester=7 (25-Oct-2026), expected_degree_completion_year=2027"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 200', function () { pm.response.to.have.status(200); });",
+              "pm.test('Branch is ICT', function () {",
+              "    pm.expect(pm.response.json().branch).to.eql('Information and Communication Technology (ICT)');",
+              "});",
+              "pm.test('Enrollment year is 2023', function () {",
+              "    pm.expect(pm.response.json().enrollment_year).to.eql(2023);",
+              "});",
+              "pm.test('Expected completion year is 2027', function () {",
+              "    pm.expect(pm.response.json().expected_degree_completion_year).to.eql(2027);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Test 3 – Computer Engineering, 2024 batch (24BCP045)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"roll_number\": \"24BCP045\"\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/decode",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5000",
+          "path": ["decode"]
+        },
+        "description": "Expected: HTTP 200, branch=Computer Engineering, enrollment_year=2024, semester=5 (25-Oct-2026), expected_degree_completion_year=2028"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 200', function () { pm.response.to.have.status(200); });",
+              "pm.test('Branch is Computer Engineering', function () {",
+              "    pm.expect(pm.response.json().branch).to.eql('Computer Engineering');",
+              "});",
+              "pm.test('Enrollment year is 2024', function () {",
+              "    pm.expect(pm.response.json().enrollment_year).to.eql(2024);",
+              "});",
+              "pm.test('Expected completion year is 2028', function () {",
+              "    pm.expect(pm.response.json().expected_degree_completion_year).to.eql(2028);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Test 4 – ICT, 2025 batch (25BIT003)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"roll_number\": \"25BIT003\"\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/decode",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5000",
+          "path": ["decode"]
+        },
+        "description": "Expected: HTTP 200, branch=ICT, enrollment_year=2025, semester=3 (25-Oct-2026), expected_degree_completion_year=2029"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 200', function () { pm.response.to.have.status(200); });",
+              "pm.test('Branch is ICT', function () {",
+              "    pm.expect(pm.response.json().branch).to.eql('Information and Communication Technology (ICT)');",
+              "});",
+              "pm.test('Enrollment year is 2025', function () {",
+              "    pm.expect(pm.response.json().enrollment_year).to.eql(2025);",
+              "});",
+              "pm.test('Expected completion year is 2029', function () {",
+              "    pm.expect(pm.response.json().expected_degree_completion_year).to.eql(2029);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Test 5 – Computer Engineering, 2026 batch (26BCP036)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"roll_number\": \"26BCP036\"\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/decode",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5000",
+          "path": ["decode"]
+        },
+        "description": "Expected: HTTP 200, branch=Computer Engineering, enrollment_year=2026, semester=1 (25-Oct-2026), expected_degree_completion_year=2030"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 200', function () { pm.response.to.have.status(200); });",
+              "pm.test('Branch is Computer Engineering', function () {",
+              "    pm.expect(pm.response.json().branch).to.eql('Computer Engineering');",
+              "});",
+              "pm.test('Enrollment year is 2026', function () {",
+              "    pm.expect(pm.response.json().enrollment_year).to.eql(2026);",
+              "});",
+              "pm.test('Expected completion year is 2030', function () {",
+              "    pm.expect(pm.response.json().expected_degree_completion_year).to.eql(2030);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Test 6 – Optional D suffix (24BCP424D)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"roll_number\": \"24BCP424D\"\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/decode",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5000",
+          "path": ["decode"]
+        },
+        "description": "Expected: HTTP 200. Trailing D suffix ignored for parsing. branch=Computer Engineering, enrollment_year=2024, expected_degree_completion_year=2028"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 200', function () { pm.response.to.have.status(200); });",
+              "pm.test('Branch is Computer Engineering', function () {",
+              "    pm.expect(pm.response.json().branch).to.eql('Computer Engineering');",
+              "});",
+              "pm.test('Enrollment year is 2024', function () {",
+              "    pm.expect(pm.response.json().enrollment_year).to.eql(2024);",
+              "});",
+              "pm.test('Expected completion year is 2028', function () {",
+              "    pm.expect(pm.response.json().expected_degree_completion_year).to.eql(2028);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Test 7 – Missing roll_number field",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/decode",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5000",
+          "path": ["decode"]
+        },
+        "description": "Expected: HTTP 400, JSON error body"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 400', function () { pm.response.to.have.status(400); });",
+              "pm.test('Response has error field', function () {",
+              "    pm.expect(pm.response.json()).to.have.property('error');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Test 8 – Empty roll_number",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"roll_number\": \"\"\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/decode",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5000",
+          "path": ["decode"]
+        },
+        "description": "Expected: HTTP 400, JSON error body"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 400', function () { pm.response.to.have.status(400); });",
+              "pm.test('Response has error field', function () {",
+              "    pm.expect(pm.response.json()).to.have.property('error');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Test 9 – Invalid roll-number format",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"roll_number\": \"INVALID123\"\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/decode",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5000",
+          "path": ["decode"]
+        },
+        "description": "Expected: HTTP 400, JSON error about invalid format"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 400', function () { pm.response.to.have.status(400); });",
+              "pm.test('Response has error field', function () {",
+              "    pm.expect(pm.response.json()).to.have.property('error');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Test 10 – Unsupported branch code (23XYZ001)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"roll_number\": \"23XYZ001\"\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/decode",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5000",
+          "path": ["decode"]
+        },
+        "description": "Expected: HTTP 400, JSON error identifying the unsupported branch code XYZ"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 400', function () { pm.response.to.have.status(400); });",
+              "pm.test('Error mentions branch code', function () {",
+              "    var body = JSON.stringify(pm.response.json());",
+              "    pm.expect(body).to.include('XYZ');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Test 11 – Invalid (malformed) JSON body",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"roll_number\":",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/decode",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5000",
+          "path": ["decode"]
+        },
+        "description": "Expected: HTTP 400, JSON error about malformed/invalid JSON"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 400', function () { pm.response.to.have.status(400); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Test 12 – Wrong HTTP method (GET /decode)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:5000/decode",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5000",
+          "path": ["decode"]
+        },
+        "description": "Expected: HTTP 405 Method Not Allowed"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 405', function () { pm.response.to.have.status(405); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Test 13 – Health check (GET /health)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:5000/health",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5000",
+          "path": ["health"]
+        },
+        "description": "Expected: HTTP 200 with a JSON message confirming the server is running"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 200', function () { pm.response.to.have.status(200); });",
+              "pm.test('status field is ok', function () {",
+              "    pm.expect(pm.response.json().status).to.eql('ok');",
+              "});"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
